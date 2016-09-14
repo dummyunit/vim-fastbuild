@@ -13,7 +13,7 @@ syn region fbComment start=";" end="$"
 syn region fbComment start="//" end="$"
 
 " Strings
-syn match fbEscape display contained "^."
+syn match fbEscape display contained "\^."
 syn match fbVariablePaste display contained "\$\w\+\$"
 syn match fbBTSubstitution display contained "%[0-4]"
 syn region fbString start=+"+ skip=+^"+ end=+"+ contains=fbEscape,fbVariablePaste,fbBTSubstitution
