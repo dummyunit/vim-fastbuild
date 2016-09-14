@@ -7,6 +7,10 @@ if exists("b:did_indent")
 endif
 let b:did_indent = 1
 
+if !exists('g:fastbuild_debug')
+	let g:fastbuild_debug = 0
+endif
+
 setlocal indentexpr=GetFBuildIndent()
 setlocal indentkeys+=0[,0]
 setlocal autoindent
@@ -19,10 +23,9 @@ endif
 function! GetFBuildIndent()
 	" Find a non-blank line above the current line.
 	let prevlnum = prevnonblank(v:lnum - 1)
-	echom "cur  line" v:lnum
-	echom "cur  text" getline(v:lnum)
-	echom "prev line" prevlnum
-	echom "prev text" getline(prevlnum)
+	if g:fastbuild_debug
+		echom "line" v:lnum.":" getline(v:lnum)
+	endif
 
 	" At the start of the file use zero indent.
 	if prevlnum == 0
@@ -30,20 +33,23 @@ function! GetFBuildIndent()
 	endif
 
 	let ind = indent(prevlnum)
-	echom "ind" ind
+	let prevind = ind
 
 	" Add a 'shiftwidth' after lines that end with { or [
 	if getline(prevlnum) =~ '[{\[]\s*$'
 		let ind = ind + &shiftwidth
-		echom "+"
+		if g:fastbuild_debug
+			echom prevind "->" ind
+		endif
 	endif
 
 	" Subtract a 'shiftwidth' on lines containing only } or ]
 	if getline(v:lnum) =~ '^\s*[}\]]\s*$'
 		let ind = ind - &shiftwidth
-		echom "-"
+		if g:fastbuild_debug
+			echom prevind "->" ind
+		endif
 	endif
 
-	echom "ind" ind
 	return ind
 endfunction
