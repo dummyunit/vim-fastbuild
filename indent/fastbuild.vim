@@ -38,8 +38,8 @@ function! GetFBuildIndent()
 		echom "+"
 	endif
 
-	" Subtract a 'shiftwidth' on } and ]
-	if getline(v:lnum) =~ '[}\]]$'
+	" Subtract a 'shiftwidth' on lines containing only } or ]
+	if getline(v:lnum) =~ '^\s*[}\]]\s*$'
 		let ind = ind - &shiftwidth
 		echom "-"
 	endif
