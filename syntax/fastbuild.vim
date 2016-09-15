@@ -1,16 +1,19 @@
 " Vim syntax file
-" Language:	FASTBuild
+" Language:    FASTBuild
 
 " Quit when a (custom) syntax file was already loaded
-if exists("b:current_syntax")
-  finish
+if version < 600
+    syntax clear
+elseif exists("b:current_syntax")
+    finish
 endif
 
 syn case match
 
 " Comments
-syn region fbComment start=";" end="$"
-syn region fbComment start="//" end="$"
+syn keyword fbTodo TODO FIXME XXX contained
+syn region fbComment start=";" end="$" contains=fbTodo
+syn region fbComment start="//" end="$" contains=fbTodo
 
 " Strings
 syn match fbEscape display contained "\^."
@@ -41,8 +44,8 @@ syn keyword fbPredefSymbol __LINUX__ __OSX__ __WINDOWS__
 " File names are handled as regular strings
 syn match fbInclude display "#\s*include"
 
-" #if/#else/#endif
-syn match fbIfElse display "#\s*\(if\|else\|endif\)"
+" #if / #else / #endif
+syn match fbIfElse "#\s*\(if\|else\|endif\)" nextgroup=fbDefineToken skipwhite
 
 " #import
 syn match fbImport display "#\s*import" nextgroup=fbVariableName skipwhite
@@ -50,15 +53,18 @@ syn match fbImport display "#\s*import" nextgroup=fbVariableName skipwhite
 " #once
 syn match fbOnce display "#\s*once"
 
+" Operators
 if exists('fastbuild_operators')
-	syn keyword fbKeyword in
-	syn match fbOperator display "+"
-	syn match fbOperator display "-"
-	syn match fbOperator display "="
+    syn keyword fbKeyword in
+    syn match fbOperator display "+"
+    syn match fbOperator display "-"
+    syn match fbOperator display "="
 endif
 
 " Functions
-syn keyword fbFunction Alias Compiler Copy CopyDir CSAssembly DLL Exec Executable ForEach Library ObjectList Print RemoveDir Settings Test Unity Using VCXProject VSSolution XCodeProject
+syn keyword fbFunction Alias Compiler Copy CopyDir CSAssembly DLL Exec
+syn keyword fbFunction Executable ForEach Library ObjectList Print RemoveDir
+syn keyword fbFunction Settings Test Unity Using VCXProject VSSolution XCodeProject
 
 " Common properties
 syn keyword fbProperty contained PreBuildDependencies
@@ -73,88 +79,139 @@ syn keyword fbProperty contained Executable ExtraFiles VS2012EnumBugFix
 syn keyword fbProperty contained Source Dest SourceBasePath
 
 " CopyDir properties
-syn keyword fbProperty contained SourcePaths Dest SourcePathsPattern SourcePathsRecurse SourceExcludePaths
+syn keyword fbProperty contained SourcePaths Dest SourcePathsPattern
+syn keyword fbProperty contained SourcePathsRecurse SourceExcludePaths
 
 " CSAssembly properties
-syn keyword fbProperty contained Compiler CompilerOptions CompilerOutput CompilerInputPath CompilerInputPathRecurse CompilerInputPattern CompilerInputExcludePath CompilerInputExcludedFiles CompilerReferences
+syn keyword fbProperty contained Compiler CompilerOptions CompilerOutput
+syn keyword fbProperty contained CompilerInputPath CompilerInputPathRecurse
+syn keyword fbProperty contained CompilerInputPattern CompilerInputExcludePath
+syn keyword fbProperty contained CompilerInputExcludedFiles CompilerReferences
 
 " DLL/Executable properties
-syn keyword fbProperty contained Linker LinkerOutput LinkerOptions Libraries LinkerLinkObjects LinkerAssemblyResources LinkerStampExe LinkerStampExeArgs LinkerType
+syn keyword fbProperty contained Linker LinkerOutput LinkerOptions Libraries
+syn keyword fbProperty contained LinkerLinkObjects LinkerAssemblyResources
+syn keyword fbProperty contained LinkerStampExe LinkerStampExeArgs LinkerType
 
 " Exec properties
-syn keyword fbProperty contained ExecExecutable ExecInput ExecOutput ExecArguments ExecWorkingDir ExecReturnCode ExecUseStdOutAsOutput PreBuildDependencies
+syn keyword fbProperty contained ExecExecutable ExecInput ExecOutput ExecArguments
+syn keyword fbProperty contained ExecWorkingDir ExecReturnCode ExecUseStdOutAsOutput
+syn keyword fbProperty contained PreBuildDependencies
 
 " Library/ObjectList properties
-syn keyword fbProperty contained Compiler CompilerOptions CompilerOutputPath CompilerOutputExtension CompilerOutputPrefix
-syn keyword fbProperty contained Librarian LibrarianOptions LibrarianOutput LibrarianAdditionalInputs
-syn keyword fbProperty contained CompilerInputPath CompilerInputPattern CompilerInputPathRecurse CompilerInputExcludePath CompilerInputExcludedFiles CompilerInputFiles CompilerInputFilesRoot CompilerInputUnity
-syn keyword fbProperty contained AllowCaching AllowDistribution Preprocessor PreprocessorOptions CompilerForceUsing PCHInputFile PCHOutputFile PCHOptions
+syn keyword fbProperty contained Compiler CompilerOptions CompilerOutputPath
+syn keyword fbProperty contained CompilerOutputExtension CompilerOutputPrefix
+
+syn keyword fbProperty contained Librarian LibrarianOptions LibrarianOutput
+syn keyword fbProperty contained CompilerInputPath CompilerInputPattern
+syn keyword fbProperty contained CompilerInputExcludePath CompilerInputExcludedFiles
+syn keyword fbProperty contained CompilerInputFiles CompilerInputFilesRoot
+syn keyword fbProperty contained CompilerInputUnity CompilerInputPathRecurse
+syn keyword fbProperty contained AllowCaching AllowDistribution Preprocessor
+syn keyword fbProperty contained PreprocessorOptions CompilerForceUsing PCHInputFile
+syn keyword fbProperty contained PCHOutputFile PCHOptions LibrarianAdditionalInputs
 
 " RemoveDir properties
-syn keyword fbProperty contained RemovePaths RemovePathsRecurse RemovePatterns RemoveExcludePaths
+syn keyword fbProperty contained RemovePaths RemovePathsRecurse RemovePatterns
+syn keyword fbProperty contained RemoveExcludePaths
 
 " Settings properties
 syn keyword fbProperty contained Environment CachePath CachePluginDLL Workers
 
 " Test properties
-syn keyword fbProperty contained TestExecutable TestOutput TestArguments TestWorkingDir TestTimeOut
+syn keyword fbProperty contained TestExecutable TestOutput TestArguments
+syn keyword fbProperty contained TestWorkingDir TestTimeOut
 
 " Unity properties
-syn keyword fbProperty contained UnityInputPath UnityInputExcludePath UnityInputExcludePattern UnityInputPattern UnityInputPathRecurse UnityInputFiles UnityInputExcludedFiles UnityInputObjectLists UnityInputIsolateWritableFiles UnityInputIsolateWritableFilesLimit UnityOutputPath UnityOutputPattern UnityNumFiles UnityPCH
+syn keyword fbProperty contained UnityInputPath UnityInputExcludePath
+syn keyword fbProperty contained UnityInputExcludePattern UnityInputPattern
+syn keyword fbProperty contained UnityInputPathRecurse UnityInputFiles
+syn keyword fbProperty contained UnityInputExcludedFiles UnityInputObjectLists
+syn keyword fbProperty contained UnityInputIsolateWritableFiles
+syn keyword fbProperty contained UnityInputIsolateWritableFilesLimit
+syn keyword fbProperty contained UnityOutputPath UnityOutputPattern UnityNumFiles UnityPCH
 
 " VCXProject/XCodeProject common properties
-syn keyword fbProperty contained ProjectOutput ProjectInputPaths ProjectInputPathsExclude ProjectPatternToExclude ProjectAllowedFileExtensions ProjectFiles ProjectFilesToExclude ProjectBasePath
+syn keyword fbProperty contained ProjectOutput ProjectInputPaths
+syn keyword fbProperty contained ProjectInputPathsExclude ProjectPatternToExclude
+syn keyword fbProperty contained ProjectAllowedFileExtensions ProjectFiles
+syn keyword fbProperty contained ProjectFilesToExclude ProjectBasePath
 
 " VCXProject properties
-syn keyword fbProperty contained ProjectReferences ProjectProjectReferences RootNamespace ProjectGuid DefaultLanguage ApplicationEnvironment
-syn keyword fbProperty contained ProjectFileTypes ProjectConfigs FileType Pattern Platform Config Target
+syn keyword fbProperty contained ProjectReferences ProjectProjectReferences
+syn keyword fbProperty contained RootNamespace ProjectGuid DefaultLanguage ApplicationEnvironment
+syn keyword fbProperty contained ProjectFileTypes ProjectConfigs FileType Pattern
+syn keyword fbProperty contained Platform Config Target
+
 " ProjectConfig part
-syn keyword fbProperty contained ProjectBuildCommand ProjectRebuildCommand ProjectCleanCommand Output OutputDirectory IntermediateDirectory LayoutDir LayoutExtensionFilter
-syn keyword fbProperty contained PreprocessorDefinitions IncludeSearchPath ForcedIncludes AssemblySearchPath ForcedUsingAssemblies AdditionalOptions
-syn keyword fbProperty contained LocalDebuggerCommand LocalDebuggerCommandArguments LocalDebuggerWorkingDirectory LocalDebuggerEnvironment Xbox360DebuggerCommand DebuggerFlavor AumidOverride PlatformToolset DeploymentType DeploymentFiles
+syn keyword fbProperty contained ProjectBuildCommand ProjectRebuildCommand
+syn keyword fbProperty contained ProjectCleanCommand Output OutputDirectory
+syn keyword fbProperty contained IntermediateDirectory LayoutDir LayoutExtensionFilter
+syn keyword fbProperty contained PreprocessorDefinitions IncludeSearchPath
+syn keyword fbProperty contained ForcedIncludes AssemblySearchPath
+syn keyword fbProperty contained ForcedUsingAssemblies AdditionalOptions
+syn keyword fbProperty contained LocalDebuggerCommand LocalDebuggerCommandArguments
+syn keyword fbProperty contained LocalDebuggerWorkingDirectory LocalDebuggerEnvironment
+syn keyword fbProperty contained Xbox360DebuggerCommand DebuggerFlavor AumidOverride
+syn keyword fbProperty contained PlatformToolset DeploymentType DeploymentFiles
 
 " VSSolution properties
-syn keyword fbProperty contained SolutionOutput SolutionProjects SolutionConfigs SolutionBuildProject SolutionFolders SolutionDependencies SolutionVisualStudioVersion SolutionMinimumVisualStudioVersion Platform Config SolutionConfig SolutionPlatform Path Projects Projects Dependencies
+syn keyword fbProperty contained SolutionOutput SolutionProjects SolutionConfigs
+syn keyword fbProperty contained SolutionBuildProject SolutionFolders
+syn keyword fbProperty contained SolutionDependencies SolutionVisualStudioVersion
+syn keyword fbProperty contained SolutionMinimumVisualStudioVersion Platform
+syn keyword fbProperty contained Config SolutionConfig SolutionPlatform Path
+syn keyword fbProperty contained Projects Projects Dependencies
 
 " XCodeProject properties
-syn keyword fbProperty contained XCodeBuildToolPath XCodeBuildToolArgs XCodeBuildWorkingDir ProjectConfigs XCodeOrganizationName Config Target
+syn keyword fbProperty contained XCodeBuildToolPath XCodeBuildToolArgs
+syn keyword fbProperty contained XCodeBuildWorkingDir ProjectConfigs
+syn keyword fbProperty contained XCodeOrganizationName Config Target
 
 "
 " Highlight mappings
 "
+if version >= 508 || !exists("fastbuild_did_init")
+    if version < 508
+        lef fastbuild_did_init = 1
+        command -nargs=+ HiLink hi link <args>
+    else
+        command -nargs=+ HiLink hi def link <args>
+    endif
 
-hi def link fbComment Comment
+    HiLink fbTodo           Todo
+    HiLink fbComment        Comment
 
-hi def link fbEscape SpecialChar
-hi def link fbVariablePaste Special
-hi def link fbBTSubstitution Special
-hi def link fbString String
-hi def link fbInteger Number
-hi def link fbBoolConstant Boolean
+    HiLink fbEscape         SpecialChar
+    HiLink fbVariablePaste  Special
+    HiLink fbBTSubstitution Special
+    HiLink fbString         String
+    HiLink fbInteger        Number
+    HiLink fbBoolConstant   Boolean
 
-if exists('fastbuild_operators')
-	hi def link fbVariablePrefix Operator
+    HiLink fbVariableName   Identifier
+
+    HiLink fbDefineToken    Constant
+    HiLink fbDefine         Define
+    HiLink fbPredefSymbol   Keyword
+    HiLink fbInclude        Include
+    HiLink fbIfElse         PreCondit
+    HiLink fbImport         PreProc
+    HiLink fbOnce           PreProc
+
+    " FASTBuild functions are actually statements
+    HiLink fbFunction       Statement
+
+    " Since variable types are implicit, we reuse Type to highlight builtin properties
+    HiLink fbProperty       Type
+
+    " Don't highlight operators by default (it looks very busy)
+    if exists('fastbuild_operators')
+        HiLink fbVariablePrefix     Operator
+        HiLink fbKeyword            Keyword
+        HiLink fbOperator           Operator
+    endif
 endif
-hi def link fbVariableName Identifier
-
-hi def link fbDefineToken Constant
-hi def link fbDefine Define
-hi def link fbPredefSymbol Keyword
-hi def link fbInclude Include
-hi def link fbIfElse PreCondit
-hi def link fbImport PreProc
-hi def link fbOnce PreProc
-
-" Don't highlight operators by default (it look very busy)
-if exists('fastbuild_operators')
-	hi def link fbKeyword Keyword
-	hi def link fbOperator Operator
-endif
-
-" FASTBuild functions are actually statements
-hi def link fbFunction Statement
-
-" Since variable types are implicit, we reuse Type to highlight builtin properties
-hi def link fbProperty Type
 
 let b:current_syntax = "fastbuild"
+
