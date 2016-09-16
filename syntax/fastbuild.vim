@@ -215,6 +215,8 @@ if version >= 508 || !exists("fastbuild_did_init")
         HiLink fbKeyword            Keyword
         HiLink fbOperator           Operator
     endif
+
+    delcommand HiLink
 endif
 
 let b:current_syntax = "fastbuild"
