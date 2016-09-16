@@ -44,8 +44,11 @@ syn keyword fbPredefSymbol __LINUX__ __OSX__ __WINDOWS__
 " File names are handled as regular strings
 syn match fbInclude display "#\s*include"
 
-" #if / #else / #endif
-syn match fbIfElse "#\s*\(if\|else\|endif\)" nextgroup=fbDefineToken skipwhite
+" #if
+syn match fbIf "#\s*if" nextgroup=fbDefineToken skipwhite
+
+" #else / #endif
+syn match fbElseEndif "#\s*\(else\|endif\)"
 
 " #import
 syn match fbImport display "#\s*import" nextgroup=fbVariableName skipwhite
@@ -195,7 +198,8 @@ if version >= 508 || !exists("fastbuild_did_init")
     HiLink fbDefine         Define
     HiLink fbPredefSymbol   Keyword
     HiLink fbInclude        Include
-    HiLink fbIfElse         PreCondit
+    HiLink fbIf             PreCondit
+    HiLink fbElseEndif      PreCondit
     HiLink fbImport         PreProc
     HiLink fbOnce           PreProc
 
