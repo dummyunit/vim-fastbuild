@@ -15,6 +15,13 @@ syn keyword fbTodo TODO FIXME XXX contained
 syn region fbComment start=";" end="$" contains=fbTodo
 syn region fbComment start="//" end="$" contains=fbTodo
 
+" Operators
+if exists('fastbuild_operators')
+    syn keyword fbKeyword in
+    syn match fbOperator display "[-+=]"
+    syn match fbOperator display contained "!"
+endif
+
 " Strings
 syn match fbEscape display contained "\^."
 syn match fbVariablePaste display contained "\$\w\+\$"
@@ -45,7 +52,8 @@ syn keyword fbPredefSymbol __LINUX__ __OSX__ __WINDOWS__
 syn match fbInclude display "#\s*include"
 
 " #if
-syn match fbIf "#\s*if" nextgroup=fbDefineToken skipwhite
+syn match fbIf "#\s*if" nextgroup=fbPredefSymbol,fbDefineToken skipwhite
+syn match fbIf "#\s*if\s*!"he=e-1 contains=fbOperator nextgroup=fbPredefSymbol,fbDefineToken skipwhite
 
 " #else / #endif
 syn match fbElseEndif "#\s*\(else\|endif\)"
@@ -55,14 +63,6 @@ syn match fbImport display "#\s*import" nextgroup=fbVariableName skipwhite
 
 " #once
 syn match fbOnce display "#\s*once"
-
-" Operators
-if exists('fastbuild_operators')
-    syn keyword fbKeyword in
-    syn match fbOperator display "+"
-    syn match fbOperator display "-"
-    syn match fbOperator display "="
-endif
 
 " Functions
 syn keyword fbFunction Alias Compiler Copy CopyDir CSAssembly DLL Exec
