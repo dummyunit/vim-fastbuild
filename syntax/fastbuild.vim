@@ -42,27 +42,27 @@ syn match fbVariable transparent "[.^]\w" contains=fbVariablePrefix,fbProperty,f
 
 " #define/#undef
 syn match fbDefineToken display contained "\w\+"
-syn match fbDefine display "#\s*\(define\|undef\)" nextgroup=fbDefineToken skipwhite
+syn match fbDefine display "#\s*\(define\|undef\)\>" nextgroup=fbDefineToken skipwhite
 
 " Predefined symbols
 syn keyword fbPredefSymbol __LINUX__ __OSX__ __WINDOWS__
 
 " #include
 " File names are handled as regular strings
-syn match fbInclude display "#\s*include"
+syn match fbInclude display "#\s*include\>"
 
 " #if
-syn match fbIf "#\s*if" nextgroup=fbPredefSymbol,fbDefineToken skipwhite
-syn match fbIf "#\s*if\s*!"he=e-1 contains=fbOperator nextgroup=fbPredefSymbol,fbDefineToken skipwhite
+syn match fbIf "#\s*if\>" nextgroup=fbPredefSymbol,fbDefineToken skipwhite
+syn match fbIf "#\s*if\>\s*!"he=e-1 contains=fbOperator nextgroup=fbPredefSymbol,fbDefineToken skipwhite
 
 " #else / #endif
-syn match fbElseEndif "#\s*\(else\|endif\)"
+syn match fbElseEndif "#\s*\(else\|endif\)\>"
 
 " #import
-syn match fbImport display "#\s*import" nextgroup=fbVariableName skipwhite
+syn match fbImport display "#\s*import\>" nextgroup=fbVariableName skipwhite
 
 " #once
-syn match fbOnce display "#\s*once"
+syn match fbOnce display "#\s*once\>"
 
 " Functions
 syn keyword fbFunction Alias Compiler Copy CopyDir CSAssembly DLL Exec
