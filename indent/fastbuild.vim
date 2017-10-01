@@ -2,7 +2,7 @@
 " Language: FASTBuild configuration
 
 " Only load this indent file when no other was loaded.
-if exists("b:did_indent")
+if exists('b:did_indent')
 	finish
 endif
 let b:did_indent = 1
@@ -16,7 +16,7 @@ setlocal indentkeys+=0[,0],0+
 setlocal autoindent
 
 " Only define the function once.
-if exists("*GetFBuildIndent")
+if exists('*GetFBuildIndent')
 	finish
 endif
 
@@ -41,10 +41,10 @@ function s:count_braces(lnum, count_open)
 	let pattern = '[{}[\]]'
 	let i = match(line, pattern)
 	while i != -1
-		if synIDattr(synID(a:lnum, i + 1, 0), 'name') !~ 'fb\%(Comment\|String\)'
-			if line[i] == '{' || line[i] == '['
+		if synIDattr(synID(a:lnum, i + 1, 0), 'name') !~# 'fb\%(Comment\|String\)'
+			if line[i] ==# '{' || line[i] ==# '['
 				let n_open += 1
-			elseif line[i] == '}' || line[i] == ']'
+			elseif line[i] ==# '}' || line[i] ==# ']'
 				if n_open > 0
 					let n_open -= 1
 				else
@@ -60,16 +60,16 @@ endfunction
 function! GetFBuildIndent()
 	let line = getline(v:lnum)
 	if g:fastbuild_debug
-		echom "line" v:lnum.":" line
+		echom 'line' v:lnum.':' line
 	endif
 
-	if line =~ '^\s*#'
+	if line =~# '^\s*#'
 		" Special case: line contains directive, push it to the left.
 		if g:fastbuild_debug
-			echom "directive: 0"
+			echom 'directive: 0'
 		endif
 		return 0
-	elseif line =~ '^\s*[+-]'
+	elseif line =~# '^\s*[+-]'
 		" Special case: line starts with an operator.
 		" Find previous non-blank, non-directive, non-comment line.
 		let prevlnum = s:prevline(v:lnum - 1, '[^#;/]\|/[^/]')
@@ -77,18 +77,18 @@ function! GetFBuildIndent()
 			return 0
 		endif
 		if g:fastbuild_debug
-			echom "prev line" prevlnum.":" getline(prevlnum)
+			echom 'prev line' prevlnum.':' getline(prevlnum)
 		endif
 
 		let prevind = indent(prevlnum)
 		let ind = prevind
-		if getline(prevlnum) !~ '^\s*[+-]'
+		if getline(prevlnum) !~# '^\s*[+-]'
 			" Previous line doesn't start with operator, increase indent.
 			let ind += &shiftwidth
 		endif
 
 		if g:fastbuild_debug
-			echom "operator:" prevind."->".ind
+			echom 'operator:' prevind.'->'.ind
 		endif
 		return ind
 	else
@@ -99,7 +99,7 @@ function! GetFBuildIndent()
 			return 0
 		endif
 		if g:fastbuild_debug
-			echom "prev line" prevlnum.":" getline(prevlnum)
+			echom 'prev line' prevlnum.':' getline(prevlnum)
 		endif
 
 		let prevind = indent(prevlnum)
@@ -110,7 +110,7 @@ function! GetFBuildIndent()
 			\ - s:count_braces(v:lnum, 0) * &shiftwidth
 
 		if g:fastbuild_debug
-			echom "regular:" prevind."->".ind
+			echom 'regular:' prevind.'->'.ind
 		endif
 		return ind
 	endif

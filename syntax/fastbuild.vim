@@ -2,9 +2,9 @@
 " Language:    FASTBuild
 
 " Quit when a (custom) syntax file was already loaded
-if version < 600
+if v:version < 600
 	syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
 	finish
 endif
 
@@ -245,8 +245,8 @@ syn keyword fbProperty contained XCodeOrganizationName
 "
 " Highlight mappings
 "
-if version >= 508 || !exists("fastbuild_did_init")
-	if version < 508
+if v:version >= 508 || !exists('fastbuild_did_init')
+	if v:version < 508
 		lef fastbuild_did_init = 1
 		command -nargs=+ HiLink hi link <args>
 	else
@@ -290,4 +290,4 @@ if version >= 508 || !exists("fastbuild_did_init")
 	delcommand HiLink
 endif
 
-let b:current_syntax = "fastbuild"
+let b:current_syntax = 'fastbuild'

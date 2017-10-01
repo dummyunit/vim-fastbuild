@@ -1,0 +1,5 @@
+policies:
+  ProhibitImplicitScopeVariable:
+    enabled: false
+  ProhibitUnusedVariable:
+    enabled: true
