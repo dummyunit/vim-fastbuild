@@ -3,9 +3,9 @@
 
 " Quit when a (custom) syntax file was already loaded
 if version < 600
-    syntax clear
+	syntax clear
 elseif exists("b:current_syntax")
-    finish
+	finish
 endif
 
 syn case match
@@ -17,9 +17,9 @@ syn region fbComment start="//" end="$" contains=fbTodo
 
 " Operators
 if exists('fastbuild_operators')
-    syn keyword fbKeyword in
-    syn match fbOperator display "[-+=]"
-    syn match fbOperator display contained "!"
+	syn keyword fbKeyword in
+	syn match fbOperator display "[-+=]"
+	syn match fbOperator display contained "!"
 endif
 
 " Strings
@@ -175,49 +175,48 @@ syn keyword fbProperty contained XCodeOrganizationName Config Target
 " Highlight mappings
 "
 if version >= 508 || !exists("fastbuild_did_init")
-    if version < 508
-        lef fastbuild_did_init = 1
-        command -nargs=+ HiLink hi link <args>
-    else
-        command -nargs=+ HiLink hi def link <args>
-    endif
+	if version < 508
+		lef fastbuild_did_init = 1
+		command -nargs=+ HiLink hi link <args>
+	else
+		command -nargs=+ HiLink hi def link <args>
+	endif
 
-    HiLink fbTodo           Todo
-    HiLink fbComment        Comment
+	HiLink fbTodo           Todo
+	HiLink fbComment        Comment
 
-    HiLink fbEscape         SpecialChar
-    HiLink fbVariablePaste  Special
-    HiLink fbBTSubstitution Special
-    HiLink fbString         String
-    HiLink fbInteger        Number
-    HiLink fbBoolConstant   Boolean
+	HiLink fbEscape         SpecialChar
+	HiLink fbVariablePaste  Special
+	HiLink fbBTSubstitution Special
+	HiLink fbString         String
+	HiLink fbInteger        Number
+	HiLink fbBoolConstant   Boolean
 
-    HiLink fbVariableName   Identifier
+	HiLink fbVariableName   Identifier
 
-    HiLink fbDefineToken    Constant
-    HiLink fbDefine         Define
-    HiLink fbPredefSymbol   Keyword
-    HiLink fbInclude        Include
-    HiLink fbIf             PreCondit
-    HiLink fbElseEndif      PreCondit
-    HiLink fbImport         PreProc
-    HiLink fbOnce           PreProc
+	HiLink fbDefineToken    Constant
+	HiLink fbDefine         Define
+	HiLink fbPredefSymbol   Keyword
+	HiLink fbInclude        Include
+	HiLink fbIf             PreCondit
+	HiLink fbElseEndif      PreCondit
+	HiLink fbImport         PreProc
+	HiLink fbOnce           PreProc
 
-    " FASTBuild functions are actually statements
-    HiLink fbFunction       Statement
+	" FASTBuild functions are actually statements
+	HiLink fbFunction       Statement
 
-    " Since variable types are implicit, we reuse Type to highlight builtin properties
-    HiLink fbProperty       Type
+	" Since variable types are implicit, we reuse Type to highlight builtin properties
+	HiLink fbProperty       Type
 
-    " Don't highlight operators by default (it looks very busy)
-    if exists('fastbuild_operators')
-        HiLink fbVariablePrefix     Operator
-        HiLink fbKeyword            Keyword
-        HiLink fbOperator           Operator
-    endif
+	" Don't highlight operators by default (it looks very busy)
+	if exists('fastbuild_operators')
+		HiLink fbVariablePrefix Operator
+		HiLink fbKeyword        Keyword
+		HiLink fbOperator       Operator
+	endif
 
-    delcommand HiLink
+	delcommand HiLink
 endif
 
 let b:current_syntax = "fastbuild"
-

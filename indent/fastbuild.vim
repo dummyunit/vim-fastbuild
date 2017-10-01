@@ -115,5 +115,3 @@ function! GetFBuildIndent()
 		return ind
 	endif
 endfunction
-
-" vim: noexpandtab
