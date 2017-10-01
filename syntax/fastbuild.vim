@@ -65,111 +65,172 @@ syn match fbImport display "#\s*import\>" nextgroup=fbVariableName skipwhite
 syn match fbOnce display "#\s*once\>"
 
 " Functions
-syn keyword fbFunction Alias Compiler Copy CopyDir CSAssembly DLL Exec
-syn keyword fbFunction Executable ForEach Library ObjectList Print RemoveDir
-syn keyword fbFunction Settings Test Unity Using VCXProject VSSolution XCodeProject
+syn keyword fbFunction Alias
+syn keyword fbFunction Compiler
+syn keyword fbFunction Copy
+syn keyword fbFunction CopyDir
+syn keyword fbFunction CSAssembly
+syn keyword fbFunction DLL
+syn keyword fbFunction Exec
+syn keyword fbFunction Executable
+syn keyword fbFunction ForEach
+syn keyword fbFunction Library
+syn keyword fbFunction ObjectList
+syn keyword fbFunction Print
+syn keyword fbFunction RemoveDir
+syn keyword fbFunction Settings
+syn keyword fbFunction Test
+syn keyword fbFunction Unity
+syn keyword fbFunction Using
+syn keyword fbFunction VCXProject
+syn keyword fbFunction VSSolution
+syn keyword fbFunction XCodeProject
 
-" Common properties
+" Function properties
+syn keyword fbProperty contained AdditionalOptions
+syn keyword fbProperty contained AllowCaching
+syn keyword fbProperty contained AllowDistribution
+syn keyword fbProperty contained ApplicationEnvironment
+syn keyword fbProperty contained AssemblySearchPath
+syn keyword fbProperty contained AumidOverride
+syn keyword fbProperty contained CachePath
+syn keyword fbProperty contained CachePluginDLL
+syn keyword fbProperty contained Compiler
+syn keyword fbProperty contained CompilerForceUsing
+syn keyword fbProperty contained CompilerInputExcludedFiles
+syn keyword fbProperty contained CompilerInputExcludePath
+syn keyword fbProperty contained CompilerInputFiles
+syn keyword fbProperty contained CompilerInputFilesRoot
+syn keyword fbProperty contained CompilerInputPath
+syn keyword fbProperty contained CompilerInputPathRecurse
+syn keyword fbProperty contained CompilerInputPattern
+syn keyword fbProperty contained CompilerInputUnity
+syn keyword fbProperty contained CompilerOptions
+syn keyword fbProperty contained CompilerOutput
+syn keyword fbProperty contained CompilerOutputExtension
+syn keyword fbProperty contained CompilerOutputPath
+syn keyword fbProperty contained CompilerOutputPrefix
+syn keyword fbProperty contained CompilerReferences
+syn keyword fbProperty contained Config
+syn keyword fbProperty contained DebuggerFlavor
+syn keyword fbProperty contained DefaultLanguage
+syn keyword fbProperty contained Dependencies
+syn keyword fbProperty contained DeploymentFiles
+syn keyword fbProperty contained DeploymentType
+syn keyword fbProperty contained Dest
+syn keyword fbProperty contained Environment
+syn keyword fbProperty contained ExecArguments
+syn keyword fbProperty contained ExecExecutable
+syn keyword fbProperty contained ExecInput
+syn keyword fbProperty contained ExecOutput
+syn keyword fbProperty contained ExecReturnCode
+syn keyword fbProperty contained ExecUseStdOutAsOutput
+syn keyword fbProperty contained Executable
+syn keyword fbProperty contained ExecWorkingDir
+syn keyword fbProperty contained ExtraFiles
+syn keyword fbProperty contained FileType
+syn keyword fbProperty contained ForcedIncludes
+syn keyword fbProperty contained ForcedUsingAssemblies
+syn keyword fbProperty contained IncludeSearchPath
+syn keyword fbProperty contained IntermediateDirectory
+syn keyword fbProperty contained LayoutDir
+syn keyword fbProperty contained LayoutExtensionFilter
+syn keyword fbProperty contained Librarian
+syn keyword fbProperty contained LibrarianAdditionalInputs
+syn keyword fbProperty contained LibrarianOptions
+syn keyword fbProperty contained LibrarianOutput
+syn keyword fbProperty contained Libraries
+syn keyword fbProperty contained Linker
+syn keyword fbProperty contained LinkerAssemblyResources
+syn keyword fbProperty contained LinkerLinkObjects
+syn keyword fbProperty contained LinkerOptions
+syn keyword fbProperty contained LinkerOutput
+syn keyword fbProperty contained LinkerStampExe
+syn keyword fbProperty contained LinkerStampExeArgs
+syn keyword fbProperty contained LinkerType
+syn keyword fbProperty contained LocalDebuggerCommand
+syn keyword fbProperty contained LocalDebuggerCommandArguments
+syn keyword fbProperty contained LocalDebuggerEnvironment
+syn keyword fbProperty contained LocalDebuggerWorkingDirectory
+syn keyword fbProperty contained Output
+syn keyword fbProperty contained OutputDirectory
+syn keyword fbProperty contained Path
+syn keyword fbProperty contained Pattern
+syn keyword fbProperty contained PCHInputFile
+syn keyword fbProperty contained PCHOptions
+syn keyword fbProperty contained PCHOutputFile
+syn keyword fbProperty contained Platform
+syn keyword fbProperty contained PlatformToolset
 syn keyword fbProperty contained PreBuildDependencies
-
-" Alias properties
-syn keyword fbProperty contained Targets
-
-" Compiler properties
-syn keyword fbProperty contained Executable ExtraFiles VS2012EnumBugFix
-
-" Copy properties
-syn keyword fbProperty contained Source Dest SourceBasePath
-
-" CopyDir properties
-syn keyword fbProperty contained SourcePaths Dest SourcePathsPattern
-syn keyword fbProperty contained SourcePathsRecurse SourceExcludePaths
-
-" CSAssembly properties
-syn keyword fbProperty contained Compiler CompilerOptions CompilerOutput
-syn keyword fbProperty contained CompilerInputPath CompilerInputPathRecurse
-syn keyword fbProperty contained CompilerInputPattern CompilerInputExcludePath
-syn keyword fbProperty contained CompilerInputExcludedFiles CompilerReferences
-
-" DLL/Executable properties
-syn keyword fbProperty contained Linker LinkerOutput LinkerOptions Libraries
-syn keyword fbProperty contained LinkerLinkObjects LinkerAssemblyResources
-syn keyword fbProperty contained LinkerStampExe LinkerStampExeArgs LinkerType
-
-" Exec properties
-syn keyword fbProperty contained ExecExecutable ExecInput ExecOutput ExecArguments
-syn keyword fbProperty contained ExecWorkingDir ExecReturnCode ExecUseStdOutAsOutput
-syn keyword fbProperty contained PreBuildDependencies
-
-" Library/ObjectList properties
-syn keyword fbProperty contained Compiler CompilerOptions CompilerOutputPath
-syn keyword fbProperty contained CompilerOutputExtension CompilerOutputPrefix
-
-syn keyword fbProperty contained Librarian LibrarianOptions LibrarianOutput
-syn keyword fbProperty contained CompilerInputPath CompilerInputPattern
-syn keyword fbProperty contained CompilerInputExcludePath CompilerInputExcludedFiles
-syn keyword fbProperty contained CompilerInputFiles CompilerInputFilesRoot
-syn keyword fbProperty contained CompilerInputUnity CompilerInputPathRecurse
-syn keyword fbProperty contained AllowCaching AllowDistribution Preprocessor
-syn keyword fbProperty contained PreprocessorOptions CompilerForceUsing PCHInputFile
-syn keyword fbProperty contained PCHOutputFile PCHOptions LibrarianAdditionalInputs
-
-" RemoveDir properties
-syn keyword fbProperty contained RemovePaths RemovePathsRecurse RemovePatterns
+syn keyword fbProperty contained Preprocessor
+syn keyword fbProperty contained PreprocessorDefinitions
+syn keyword fbProperty contained PreprocessorOptions
+syn keyword fbProperty contained ProjectAllowedFileExtensions
+syn keyword fbProperty contained ProjectBasePath
+syn keyword fbProperty contained ProjectBuildCommand
+syn keyword fbProperty contained ProjectCleanCommand
+syn keyword fbProperty contained ProjectConfigs
+syn keyword fbProperty contained ProjectFiles
+syn keyword fbProperty contained ProjectFilesToExclude
+syn keyword fbProperty contained ProjectFileTypes
+syn keyword fbProperty contained ProjectGuid
+syn keyword fbProperty contained ProjectInputPaths
+syn keyword fbProperty contained ProjectInputPathsExclude
+syn keyword fbProperty contained ProjectOutput
+syn keyword fbProperty contained ProjectPatternToExclude
+syn keyword fbProperty contained ProjectProjectReferences
+syn keyword fbProperty contained ProjectRebuildCommand
+syn keyword fbProperty contained ProjectReferences
+syn keyword fbProperty contained Projects
 syn keyword fbProperty contained RemoveExcludePaths
-
-" Settings properties
-syn keyword fbProperty contained Environment CachePath CachePluginDLL Workers
-
-" Test properties
-syn keyword fbProperty contained TestExecutable TestOutput TestArguments
-syn keyword fbProperty contained TestWorkingDir TestTimeOut
-
-" Unity properties
-syn keyword fbProperty contained UnityInputPath UnityInputExcludePath
-syn keyword fbProperty contained UnityInputExcludePattern UnityInputPattern
-syn keyword fbProperty contained UnityInputPathRecurse UnityInputFiles
-syn keyword fbProperty contained UnityInputExcludedFiles UnityInputObjectLists
+syn keyword fbProperty contained RemovePaths
+syn keyword fbProperty contained RemovePathsRecurse
+syn keyword fbProperty contained RemovePatterns
+syn keyword fbProperty contained RootNamespace
+syn keyword fbProperty contained SolutionBuildProject
+syn keyword fbProperty contained SolutionConfig
+syn keyword fbProperty contained SolutionConfigs
+syn keyword fbProperty contained SolutionDependencies
+syn keyword fbProperty contained SolutionFolders
+syn keyword fbProperty contained SolutionMinimumVisualStudioVersion
+syn keyword fbProperty contained SolutionOutput
+syn keyword fbProperty contained SolutionPlatform
+syn keyword fbProperty contained SolutionProjects
+syn keyword fbProperty contained SolutionVisualStudioVersion
+syn keyword fbProperty contained Source
+syn keyword fbProperty contained SourceBasePath
+syn keyword fbProperty contained SourceExcludePaths
+syn keyword fbProperty contained SourcePaths
+syn keyword fbProperty contained SourcePathsPattern
+syn keyword fbProperty contained SourcePathsRecurse
+syn keyword fbProperty contained Target
+syn keyword fbProperty contained Targets
+syn keyword fbProperty contained TestArguments
+syn keyword fbProperty contained TestExecutable
+syn keyword fbProperty contained TestOutput
+syn keyword fbProperty contained TestTimeOut
+syn keyword fbProperty contained TestWorkingDir
+syn keyword fbProperty contained UnityInputExcludedFiles
+syn keyword fbProperty contained UnityInputExcludePath
+syn keyword fbProperty contained UnityInputExcludePattern
+syn keyword fbProperty contained UnityInputFiles
 syn keyword fbProperty contained UnityInputIsolateWritableFiles
 syn keyword fbProperty contained UnityInputIsolateWritableFilesLimit
-syn keyword fbProperty contained UnityOutputPath UnityOutputPattern UnityNumFiles UnityPCH
-
-" VCXProject/XCodeProject common properties
-syn keyword fbProperty contained ProjectOutput ProjectInputPaths
-syn keyword fbProperty contained ProjectInputPathsExclude ProjectPatternToExclude
-syn keyword fbProperty contained ProjectAllowedFileExtensions ProjectFiles
-syn keyword fbProperty contained ProjectFilesToExclude ProjectBasePath
-
-" VCXProject properties
-syn keyword fbProperty contained ProjectReferences ProjectProjectReferences
-syn keyword fbProperty contained RootNamespace ProjectGuid DefaultLanguage ApplicationEnvironment
-syn keyword fbProperty contained ProjectFileTypes ProjectConfigs FileType Pattern
-syn keyword fbProperty contained Platform Config Target
-
-" ProjectConfig part
-syn keyword fbProperty contained ProjectBuildCommand ProjectRebuildCommand
-syn keyword fbProperty contained ProjectCleanCommand Output OutputDirectory
-syn keyword fbProperty contained IntermediateDirectory LayoutDir LayoutExtensionFilter
-syn keyword fbProperty contained PreprocessorDefinitions IncludeSearchPath
-syn keyword fbProperty contained ForcedIncludes AssemblySearchPath
-syn keyword fbProperty contained ForcedUsingAssemblies AdditionalOptions
-syn keyword fbProperty contained LocalDebuggerCommand LocalDebuggerCommandArguments
-syn keyword fbProperty contained LocalDebuggerWorkingDirectory LocalDebuggerEnvironment
-syn keyword fbProperty contained Xbox360DebuggerCommand DebuggerFlavor AumidOverride
-syn keyword fbProperty contained PlatformToolset DeploymentType DeploymentFiles
-
-" VSSolution properties
-syn keyword fbProperty contained SolutionOutput SolutionProjects SolutionConfigs
-syn keyword fbProperty contained SolutionBuildProject SolutionFolders
-syn keyword fbProperty contained SolutionDependencies SolutionVisualStudioVersion
-syn keyword fbProperty contained SolutionMinimumVisualStudioVersion Platform
-syn keyword fbProperty contained Config SolutionConfig SolutionPlatform Path
-syn keyword fbProperty contained Projects Projects Dependencies
-
-" XCodeProject properties
-syn keyword fbProperty contained XCodeBuildToolPath XCodeBuildToolArgs
-syn keyword fbProperty contained XCodeBuildWorkingDir ProjectConfigs
-syn keyword fbProperty contained XCodeOrganizationName Config Target
+syn keyword fbProperty contained UnityInputObjectLists
+syn keyword fbProperty contained UnityInputPath
+syn keyword fbProperty contained UnityInputPathRecurse
+syn keyword fbProperty contained UnityInputPattern
+syn keyword fbProperty contained UnityNumFiles
+syn keyword fbProperty contained UnityOutputPath
+syn keyword fbProperty contained UnityOutputPattern
+syn keyword fbProperty contained UnityPCH
+syn keyword fbProperty contained VS2012EnumBugFix
+syn keyword fbProperty contained Workers
+syn keyword fbProperty contained Xbox360DebuggerCommand
+syn keyword fbProperty contained XCodeBuildToolArgs
+syn keyword fbProperty contained XCodeBuildToolPath
+syn keyword fbProperty contained XCodeBuildWorkingDir
+syn keyword fbProperty contained XCodeOrganizationName
 
 "
 " Highlight mappings
