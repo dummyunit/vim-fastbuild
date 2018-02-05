@@ -39,9 +39,11 @@ ArrayOfStructs
 Bool
 CacheFreeMemory
 CacheInit
+CacheOutputInfo
 CachePublish
 CacheRetrieve
 CacheShutdown
+CacheTrim
 Client
 ClientThread
 CompilerInputFile
@@ -56,11 +58,14 @@ DeoptimizeWritableFiles
 DeoptimizeWritableFilesWithToken
 Directory
 Dynamic
+ExcludePaths
+ExcludePatterns
 Exe
 Exec
 Fa
 Fd
 File
+FilesToExclude
 Fo
 ForEach
 Fp
@@ -75,6 +80,7 @@ NoJobAvailable
 Object
 ObjectList
 Organization
+Patterns
 PBXLegacyTarget
 PBXNativeTarget
 PBXProject
@@ -82,6 +88,7 @@ PCHObjectFileName
 PreBuild
 Print
 Proxy
+Recursive
 Release
 RemoteWorkerThread
 RemoveDir

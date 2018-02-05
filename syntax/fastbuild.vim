@@ -98,6 +98,7 @@ syn keyword fbProperty contained CachePath
 syn keyword fbProperty contained CachePluginDLL
 syn keyword fbProperty contained ClangRewriteIncludes
 syn keyword fbProperty contained Compiler
+syn keyword fbProperty contained CompilerFamily
 syn keyword fbProperty contained CompilerForceUsing
 syn keyword fbProperty contained CompilerInputExcludedFiles
 syn keyword fbProperty contained CompilerInputExcludePath
@@ -123,6 +124,7 @@ syn keyword fbProperty contained Dependencies
 syn keyword fbProperty contained DeploymentFiles
 syn keyword fbProperty contained DeploymentType
 syn keyword fbProperty contained Dest
+syn keyword fbProperty contained DistributableJobMemoryLimitMiB
 syn keyword fbProperty contained Environment
 syn keyword fbProperty contained ExecArguments
 syn keyword fbProperty contained ExecExecutable
