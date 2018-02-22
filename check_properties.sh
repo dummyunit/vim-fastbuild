@@ -54,8 +54,6 @@ CopyFile
 CppForm
 CSAssembly
 Debug
-DeoptimizeWritableFiles
-DeoptimizeWritableFilesWithToken
 Directory
 Dynamic
 ExcludePaths

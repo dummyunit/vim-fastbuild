@@ -120,6 +120,8 @@ syn keyword fbProperty contained Config
 syn keyword fbProperty contained CustomEnvironmentVariables
 syn keyword fbProperty contained DebuggerFlavor
 syn keyword fbProperty contained DefaultLanguage
+syn keyword fbProperty contained DeoptimizeWritableFiles
+syn keyword fbProperty contained DeoptimizeWritableFilesWithToken
 syn keyword fbProperty contained Dependencies
 syn keyword fbProperty contained DeploymentFiles
 syn keyword fbProperty contained DeploymentType
@@ -129,6 +131,12 @@ syn keyword fbProperty contained Environment
 syn keyword fbProperty contained ExecArguments
 syn keyword fbProperty contained ExecExecutable
 syn keyword fbProperty contained ExecInput
+syn keyword fbProperty contained ExecInputExcludedFiles
+syn keyword fbProperty contained ExecInputExcludePath
+syn keyword fbProperty contained ExecInputExcludePattern
+syn keyword fbProperty contained ExecInputPath
+syn keyword fbProperty contained ExecInputPathRecurse
+syn keyword fbProperty contained ExecInputPattern
 syn keyword fbProperty contained ExecOutput
 syn keyword fbProperty contained ExecReturnCode
 syn keyword fbProperty contained ExecUseStdOutAsOutput
