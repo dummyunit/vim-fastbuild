@@ -17,7 +17,7 @@ syn region fbComment start="//" end="$" contains=fbTodo
 
 " Operators
 if exists('fastbuild_operators')
-	syn keyword fbKeyword in
+	syn keyword fbKeyword in not
 	syn match fbOperator display "[-+=]"
 	syn match fbOperator display contained "!"
 endif
@@ -38,7 +38,10 @@ syn keyword fbBoolConstant true false
 " Variables
 syn match fbVariablePrefix display contained "[.^]"
 syn match fbVariableName display contained "\w\+"
-syn match fbVariable transparent "[.^]\w" contains=fbVariablePrefix,fbProperty,fbVariableName
+syn match fbVariable transparent "[.^]\w" contains=fbVariablePrefix,fbProperty,fbPredefVariable,fbVariableName
+
+" Predefined variables
+syn keyword fbPredefVariable contained _WORKING_DIR_
 
 " #define/#undef
 syn match fbDefineToken display contained "\w\+"
@@ -74,6 +77,7 @@ syn keyword fbFunction DLL
 syn keyword fbFunction Exec
 syn keyword fbFunction Executable
 syn keyword fbFunction ForEach
+syn keyword fbFunction If
 syn keyword fbFunction Library
 syn keyword fbFunction ObjectList
 syn keyword fbFunction Print
@@ -100,6 +104,7 @@ syn keyword fbProperty contained ClangRewriteIncludes
 syn keyword fbProperty contained Compiler
 syn keyword fbProperty contained CompilerFamily
 syn keyword fbProperty contained CompilerForceUsing
+syn keyword fbProperty contained CompilerInputAllowNoFiles
 syn keyword fbProperty contained CompilerInputExcludedFiles
 syn keyword fbProperty contained CompilerInputExcludePath
 syn keyword fbProperty contained CompilerInputExcludePattern
@@ -226,6 +231,13 @@ syn keyword fbProperty contained Targets
 syn keyword fbProperty contained TestAlwaysShowOutput
 syn keyword fbProperty contained TestArguments
 syn keyword fbProperty contained TestExecutable
+syn keyword fbProperty contained TestInput
+syn keyword fbProperty contained TestInputExcludedFiles
+syn keyword fbProperty contained TestInputExcludePath
+syn keyword fbProperty contained TestInputExcludePattern
+syn keyword fbProperty contained TestInputPath
+syn keyword fbProperty contained TestInputPathRecurse
+syn keyword fbProperty contained TestInputPattern
 syn keyword fbProperty contained TestOutput
 syn keyword fbProperty contained TestTimeOut
 syn keyword fbProperty contained TestWorkingDir
@@ -274,6 +286,7 @@ if v:version >= 508 || !exists('fastbuild_did_init')
 	HiLink fbBoolConstant   Boolean
 
 	HiLink fbVariableName   Identifier
+	HiLink fbPredefVariable Constant
 
 	HiLink fbDefineToken    Constant
 	HiLink fbDefine         Define

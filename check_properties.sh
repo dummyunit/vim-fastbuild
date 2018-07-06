@@ -24,7 +24,7 @@ sed -n -e '/^syn keyword fbProperty/ s/^\(\w* \)*//p' "syntax/fastbuild.vim" \
 
 property_candidates="$(mktemp)"
 grep -r --include *.h --include *.cpp -h "${property_regex}" "${fastbuild_repo}/Code/Tools/FBuild/FBuildCore" \
-	| sed -e '/^ *\/\//d; /WritePGItem/d; /PROFILE_SECTION/d; /DoSectionTitle/d; /REFLECT.*MetaHidden()/d' \
+	| sed -e '/^ *\/\//d; /WritePGItem/d; /PROFILE_SECTION/d; /DoSectionTitle/d; /REFLECT.*MetaHidden()/d; /REFLECT.*MetaEmbedMembers()/d' \
 	| grep -o "${property_regex}" \
 	| sed -e 's/^[.^"]//; s/"$//' \
 	| sort -u > "${property_candidates}"
@@ -33,7 +33,6 @@ false_positives="$(mktemp)"
 cat > "${false_positives}" <<EOF
 Alias
 Any
-Appending
 ArrayOfStrings
 ArrayOfStructs
 Bool
@@ -48,6 +47,7 @@ Client
 ClientThread
 CompilerInputFile
 Connection
+ContentSize
 Copy
 CopyDir
 CopyFile
@@ -63,17 +63,23 @@ Exec
 Fa
 Fd
 File
+Files
 FilesToExclude
 Fo
 ForEach
 Fp
 Gm
+Hash
 Idle
+If
 Int
 Job
 JobResult
 Library
+Linux
+MainExecutableRootPath
 Manifest
+Name
 NoJobAvailable
 Object
 ObjectList
@@ -84,13 +90,13 @@ PBXNativeTarget
 PBXProject
 PCHObjectFileName
 PreBuild
+PrecompiledHeader
 Print
 Proxy
 Recursive
 Release
 RemoteWorkerThread
 RemoveDir
-Removing
 RequestFile
 RequestJob
 RequestManifest
@@ -103,6 +109,8 @@ Status
 String
 Struct
 Test
+TimeStamp
+ToolId
 Unavailable
 Uncacheable
 Unity
@@ -111,6 +119,7 @@ VCXProj
 VCXProject
 VSSolution
 Win32
+Windows
 WorkerThread
 XCodeProj
 XCodeProject
