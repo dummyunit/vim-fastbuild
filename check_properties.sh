@@ -16,116 +16,33 @@ if [[ ! -r "syntax/fastbuild.vim" ]]; then
 	exit 1
 fi
 
-property_regex='[.^"][A-Z][A-Z0-9]*[a-z][A-Za-z0-9]*"'
-
 known_properties="$(mktemp)"
 sed -n -e '/^syn keyword fbProperty/ s/^\(\w* \)*//p' "syntax/fastbuild.vim" \
 	| sort > "${known_properties}"
 
 property_candidates="$(mktemp)"
-grep -r --include *.h --include *.cpp -h "${property_regex}" "${fastbuild_repo}/Code/Tools/FBuild/FBuildCore" \
-	| sed -e '/^ *\/\//d; /WritePGItem/d; /PROFILE_SECTION/d; /DoSectionTitle/d; /REFLECT.*MetaHidden()/d; /REFLECT.*MetaEmbedMembers()/d' \
-	| grep -o "${property_regex}" \
-	| sed -e 's/^[.^"]//; s/"$//' \
+grep -r --include *.h --include *.cpp -h "^ *REFLECT" "${fastbuild_repo}/Code/Tools/FBuild/FBuildCore" \
+	| sed -e '/MetaHidden()/d; /MetaEmbedMembers()/d' \
+	| grep -o '"[A-Z][A-Za-z0-9]*"' \
+	| sed -e 's/^"//; s/"$//' \
 	| sort -u > "${property_candidates}"
 
 false_positives="$(mktemp)"
 cat > "${false_positives}" <<EOF
-Alias
-Any
-ArrayOfStrings
-ArrayOfStructs
-Bool
-CacheFreeMemory
-CacheInit
-CacheOutputInfo
-CachePublish
-CacheRetrieve
-CacheShutdown
-CacheTrim
-Client
-ClientThread
 CompilerInputFile
-Connection
 ContentSize
-Copy
-CopyDir
-CopyFile
-CppForm
-CSAssembly
-Debug
-Directory
-Dynamic
 ExcludePaths
 ExcludePatterns
-Exe
-Exec
-Fa
-Fd
-File
 Files
 FilesToExclude
-Fo
-ForEach
-Fp
-Gm
 Hash
-Idle
-If
-Int
-Job
-JobResult
-Library
-Linux
 MainExecutableRootPath
-Manifest
 Name
-NoJobAvailable
-Object
-ObjectList
-Organization
 Patterns
-PBXLegacyTarget
-PBXNativeTarget
-PBXProject
 PCHObjectFileName
-PreBuild
-PrecompiledHeader
-Print
-Proxy
 Recursive
-Release
-RemoteWorkerThread
-RemoveDir
-RequestFile
-RequestJob
-RequestManifest
-Server
-ServerStatus
-ServerThread
-Settings
-Static
-Status
-String
-Struct
-Test
 TimeStamp
 ToolId
-Unavailable
-Uncacheable
-Unity
-Using
-VCXProj
-VCXProject
-VSSolution
-Win32
-Windows
-WorkerThread
-XCodeProj
-XCodeProject
-Yc
-Yu
-Zi
 EOF
 
 echo "Known properties not found in FASTBuild source code:"
