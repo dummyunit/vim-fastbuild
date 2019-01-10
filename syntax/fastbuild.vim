@@ -18,7 +18,7 @@ syn region fbComment start="//" end="$" contains=fbTodo
 " Operators
 if exists('fastbuild_operators')
 	syn keyword fbKeyword in not
-	syn match fbOperator display "[-+=]"
+	syn match fbOperator display "[-+=<>]"
 	syn match fbOperator display contained "!"
 endif
 
@@ -41,6 +41,9 @@ syn match fbVariableName display contained "\w\+"
 syn match fbVariable transparent "[.^]\w" contains=fbVariablePrefix,fbProperty,fbPredefVariable,fbVariableName
 
 " Predefined variables
+syn keyword fbPredefVariable contained _CURRENT_BFF_DIR_
+syn keyword fbPredefVariable contained _FASTBUILD_VERSION_
+syn keyword fbPredefVariable contained _FASTBUILD_VERSION_STRING_
 syn keyword fbPredefVariable contained _WORKING_DIR_
 
 " #define/#undef
@@ -74,6 +77,7 @@ syn keyword fbFunction Copy
 syn keyword fbFunction CopyDir
 syn keyword fbFunction CSAssembly
 syn keyword fbFunction DLL
+syn keyword fbFunction Error
 syn keyword fbFunction Exec
 syn keyword fbFunction Executable
 syn keyword fbFunction ForEach
@@ -99,6 +103,7 @@ syn keyword fbProperty contained AssemblySearchPath
 syn keyword fbProperty contained AumidOverride
 syn keyword fbProperty contained BuildLogFile
 syn keyword fbProperty contained CachePath
+syn keyword fbProperty contained CachePathMountPoint
 syn keyword fbProperty contained CachePluginDLL
 syn keyword fbProperty contained ClangRewriteIncludes
 syn keyword fbProperty contained Compiler
@@ -214,6 +219,7 @@ syn keyword fbProperty contained SolutionBuildProject
 syn keyword fbProperty contained SolutionConfig
 syn keyword fbProperty contained SolutionConfigs
 syn keyword fbProperty contained SolutionDependencies
+syn keyword fbProperty contained SolutionDeployProjects
 syn keyword fbProperty contained SolutionFolders
 syn keyword fbProperty contained SolutionMinimumVisualStudioVersion
 syn keyword fbProperty contained SolutionOutput

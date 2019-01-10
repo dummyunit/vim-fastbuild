@@ -56,11 +56,13 @@ CSAssembly
 Debug
 Directory
 Dynamic
+Error
 ExcludePaths
 ExcludePatterns
 Exe
 Exec
 Fa
+FastBuild
 Fd
 File
 Files
