@@ -47,7 +47,6 @@ Client
 ClientThread
 CompilerInputFile
 Connection
-ContentSize
 Copy
 CopyDir
 CopyFile
@@ -65,13 +64,11 @@ Fa
 FastBuild
 Fd
 File
-Files
 FilesToExclude
 Fo
 ForEach
 Fp
 Gm
-Hash
 Idle
 If
 Int
@@ -79,9 +76,7 @@ Job
 JobResult
 Library
 Linux
-MainExecutableRootPath
 Manifest
-Name
 NoJobAvailable
 Object
 ObjectList
@@ -111,8 +106,6 @@ Status
 String
 Struct
 Test
-TimeStamp
-ToolId
 Unavailable
 Uncacheable
 Unity

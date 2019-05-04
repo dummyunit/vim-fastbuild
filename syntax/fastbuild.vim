@@ -123,6 +123,7 @@ syn keyword fbProperty contained CompilerOptions
 syn keyword fbProperty contained CompilerOptionsDeoptimized
 syn keyword fbProperty contained CompilerOutput
 syn keyword fbProperty contained CompilerOutputExtension
+syn keyword fbProperty contained CompilerOutputKeepBaseExtension
 syn keyword fbProperty contained CompilerOutputPath
 syn keyword fbProperty contained CompilerOutputPrefix
 syn keyword fbProperty contained CompilerReferences
@@ -138,6 +139,7 @@ syn keyword fbProperty contained DeploymentType
 syn keyword fbProperty contained Dest
 syn keyword fbProperty contained DistributableJobMemoryLimitMiB
 syn keyword fbProperty contained Environment
+syn keyword fbProperty contained ExecAlways
 syn keyword fbProperty contained ExecArguments
 syn keyword fbProperty contained ExecExecutable
 syn keyword fbProperty contained ExecInput
