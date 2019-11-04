@@ -96,9 +96,12 @@ syn keyword fbFunction XCodeProject
 
 " Function properties
 syn keyword fbProperty contained AdditionalOptions
+syn keyword fbProperty contained AdditionalSymbolSearchPaths
 syn keyword fbProperty contained AllowCaching
 syn keyword fbProperty contained AllowDistribution
 syn keyword fbProperty contained ApplicationEnvironment
+syn keyword fbProperty contained ApplicationType
+syn keyword fbProperty contained ApplicationTypeRevision
 syn keyword fbProperty contained AssemblySearchPath
 syn keyword fbProperty contained AumidOverride
 syn keyword fbProperty contained BuildLogFile
@@ -127,6 +130,7 @@ syn keyword fbProperty contained CompilerOutputKeepBaseExtension
 syn keyword fbProperty contained CompilerOutputPath
 syn keyword fbProperty contained CompilerOutputPrefix
 syn keyword fbProperty contained CompilerReferences
+syn keyword fbProperty contained Condition
 syn keyword fbProperty contained Config
 syn keyword fbProperty contained CustomEnvironmentVariables
 syn keyword fbProperty contained DebuggerFlavor
@@ -137,6 +141,7 @@ syn keyword fbProperty contained Dependencies
 syn keyword fbProperty contained DeploymentFiles
 syn keyword fbProperty contained DeploymentType
 syn keyword fbProperty contained Dest
+syn keyword fbProperty contained DisableDBMigration
 syn keyword fbProperty contained DistributableJobMemoryLimitMiB
 syn keyword fbProperty contained Environment
 syn keyword fbProperty contained ExecAlways
@@ -159,8 +164,10 @@ syn keyword fbProperty contained ExtraFiles
 syn keyword fbProperty contained FileType
 syn keyword fbProperty contained ForcedIncludes
 syn keyword fbProperty contained ForcedUsingAssemblies
+syn keyword fbProperty contained Hidden
 syn keyword fbProperty contained IncludeSearchPath
 syn keyword fbProperty contained IntermediateDirectory
+syn keyword fbProperty contained Keyword
 syn keyword fbProperty contained LayoutDir
 syn keyword fbProperty contained LayoutExtensionFilter
 syn keyword fbProperty contained Librarian
@@ -182,6 +189,7 @@ syn keyword fbProperty contained LocalDebuggerEnvironment
 syn keyword fbProperty contained LocalDebuggerWorkingDirectory
 syn keyword fbProperty contained Output
 syn keyword fbProperty contained OutputDirectory
+syn keyword fbProperty contained PackagePath
 syn keyword fbProperty contained Path
 syn keyword fbProperty contained Pattern
 syn keyword fbProperty contained PCHInputFile
@@ -193,6 +201,7 @@ syn keyword fbProperty contained PreBuildDependencies
 syn keyword fbProperty contained Preprocessor
 syn keyword fbProperty contained PreprocessorDefinitions
 syn keyword fbProperty contained PreprocessorOptions
+syn keyword fbProperty contained Project
 syn keyword fbProperty contained ProjectAllowedFileExtensions
 syn keyword fbProperty contained ProjectBasePath
 syn keyword fbProperty contained ProjectBuildCommand
@@ -206,6 +215,7 @@ syn keyword fbProperty contained ProjectInputPaths
 syn keyword fbProperty contained ProjectInputPathsExclude
 syn keyword fbProperty contained ProjectOutput
 syn keyword fbProperty contained ProjectPatternToExclude
+syn keyword fbProperty contained ProjectProjectImports
 syn keyword fbProperty contained ProjectProjectReferences
 syn keyword fbProperty contained ProjectRebuildCommand
 syn keyword fbProperty contained ProjectReferences
@@ -253,6 +263,7 @@ syn keyword fbProperty contained UnityInputExcludedFiles
 syn keyword fbProperty contained UnityInputExcludePath
 syn keyword fbProperty contained UnityInputExcludePattern
 syn keyword fbProperty contained UnityInputFiles
+syn keyword fbProperty contained UnityInputIsolatedFiles
 syn keyword fbProperty contained UnityInputIsolateWritableFiles
 syn keyword fbProperty contained UnityInputIsolateWritableFilesLimit
 syn keyword fbProperty contained UnityInputObjectLists
@@ -267,9 +278,14 @@ syn keyword fbProperty contained VS2012EnumBugFix
 syn keyword fbProperty contained WorkerConnectionLimit
 syn keyword fbProperty contained Workers
 syn keyword fbProperty contained Xbox360DebuggerCommand
+syn keyword fbProperty contained XCodeBaseSDK
 syn keyword fbProperty contained XCodeBuildToolArgs
 syn keyword fbProperty contained XCodeBuildToolPath
 syn keyword fbProperty contained XCodeBuildWorkingDir
+syn keyword fbProperty contained XCodeCommandLineArguments
+syn keyword fbProperty contained XCodeCommandLineArgumentsDisabled
+syn keyword fbProperty contained XCodeDebugWorkingDir
+syn keyword fbProperty contained XCodeDocumentVersioning
 syn keyword fbProperty contained XCodeOrganizationName
 
 "
